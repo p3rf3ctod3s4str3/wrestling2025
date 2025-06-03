@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrestling - Pasión y Fuerza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h2 {
+            color: #ffd93d;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hashtags {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hashtags span {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 0 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .mensaje-nikito {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(78, 205, 196, 0.3);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
+        }
+
+        .mensaje-nikito:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .mensaje-nikito p {
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .motivacion {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivacion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .motivacion p {
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .image-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-card .caption {
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.8), rgba(78, 205, 196, 0.8));
+        }
+
+        .video-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .container { padding: 10px; }
+            .images-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🥇 ¡Vamos con todo, campeones y campeonas! 🥇</h1>
+            <p style="color: white; font-size: 1.2em;">Donde la pasión se convierte en victoria</p>
+        </header>
+
+        <section class="mensaje-bienvenida">
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin: 30px 0; border: 1px solid rgba(255, 255, 255, 0.2); color: white; text-align: center; line-height: 1.8;">
+                <p>Desde cada rincón de América, llegan los más fuertes y determinados a dejarlo todo en la mesa.</p>
+                <p>El <strong>Armwrestling Panamericano 2025</strong> en Argentina no es solo una competencia: es el reflejo de disciplina, respeto y pasión por el deporte.</p>
+                <p><strong>A cada atleta:</strong> que el esfuerzo, el entrenamiento y el corazón que han puesto los acompañe en cada enfrentamiento.</p>
+                <p>¡Que cada lucha sea digna, intensa y memorable!</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="hashtags">
+                <span>#ArmWrestling2025</span>
+                <span>#PanamericanoArgentina</span>
+                <span>#PulsoConPasión</span>
+                <span>#FuerzaLatina</span>
+            </div>
+
+            <div class="mensaje-nikito">
+                <p>¡Vamos Nikito con todo, eres el mejor! 💪 👑</p>
+            </div>
+
+            <div class="motivacion">
+                <p>Cree en ti, cada segundo de esfuerzo construye la victoria. ¡Tu pasión es tu mayor fuerza!</p>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number">2025</div>
+                <div class="stat-label">Año de Victoria</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Dedicación</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Pasión</div>
+            </div>
+        </section>
+
+        <section class="audio-section" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin: 30px 0; border: 1px solid rgba(255, 255, 255, 0.2); text-align: center;">
+            <h2>🎵 Música Motivacional</h2>
+            <p style="color: white; margin-bottom: 20px;">La banda sonora perfecta para entrenar</p>
+            <div class="audio-container" style="max-width: 600px; margin: 20px auto; background: linear-gradient(45deg, #667eea, #764ba2); padding: 20px; border-radius: 15px; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);">
+                <h3 style="color: white; margin-bottom: 15px;">🔥 Tema Oficial</h3>
+                <audio controls style="width: 100%; height: 50px;">
+                    <source src="audio/tema.mp3" type="audio/mpeg">
+                    Tu navegador no soporta el elemento audio.
+                </audio>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2>🎬 Videos Destacados</h2>
+            <p style="color: white; margin-bottom: 20px;">Revive los momentos más emocionantes</p>
+            
+            <div class="videos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div class="video-container">
+                    <h3 style="color: white; margin-bottom: 10px; text-align: center;">Video Principal</h3>
+                    <video controls poster="imagen/fondo.jpg">
+                        <source src="video/Video1.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento video.
+                    </video>
+                </div>
+                
+                <div class="video-container">
+                    <h3 style="color: white; margin-bottom: 10px; text-align: center;">Entrenamientos</h3>
+                    <video controls poster="imagen/atletas.jpg">
+                        <source src="video/video2.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento video.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🏆 Imágenes Principales</h2>
+            <div class="images-grid">
+                <div class="image-card">
+                    <img src="imagen/luchadores.jpg" alt="Luchadores en acción">
+                    <div class="caption">Luchadores en Acción</div>
+                </div>
+                <div class="image-card">
+                    <img src="imagen/atletas.jpg" alt="Atletas entrenando">
+                    <div class="caption">Atletas Entrenando</div>
+                </div>
+                <div class="image-card">
+                    <img src="imagen/disciplina.jpg" alt="Disciplina y entrenamiento">
+                    <div class="caption">Disciplina Total</div>
+                </div>
+                <div class="image-card">
+                    <img src="imagen/fondo.jpg" alt="Ambiente de competencia">
+                    <div class="caption">Ambiente Competitivo</div>
+                </div>
+                <div class="image-card">
+                    <img src="imagen/lucha.jpg" alt="Momento de lucha">
+                    <div class="caption">El Momento Decisivo</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>💪 Mensaje de Motivación</h2>
+            <div class="motivacion">
+                <p>"El éxito no es solo ganar, es superarte cada día. Cada entrenamiento, cada gota de sudor, cada momento de determinación te acerca más a tu meta. ¡La gloria te espera, campeón!"</p>
+            </div>
+        </section>
+
+        <footer>
+            <h3>🌟 Síguenos en nuestras redes</h3>
+            <div class="social-links">
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">YouTube</a>
+                <a href="#" target="_blank">Twitter</a>
+            </div>
+            <p>&copy; 2025 Wrestling Passion. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">¡Donde nacen los campeones! 🏆</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animación de entrada para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.image-card, .stat-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Efecto de partículas en el fondo
+            createParticles();
+        });
+
+        function createParticles() {
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: -1;
+                    top: ${Math.random() * 100}vh;
+                    left: ${Math.random() * 100}vw;
+                    animation: float ${3 + Math.random() * 4}s infinite ease-in-out;
+                `;
+                
+                document.body.appendChild(particle);
+            }
+        }
+
+        // CSS para la animación de partículas
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0px) rotate(0deg);
+                    opacity: 0.1;
+                }
+                50% {
+                    transform: translateY(-20px) rotate(180deg);
+                    opacity: 0.3;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
