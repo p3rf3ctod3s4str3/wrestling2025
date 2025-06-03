@@ -48,9 +48,10 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+}
 
         h2 {
             color: #ffd93d;
@@ -360,6 +361,14 @@
                 </div>
             </div>
         </section>
+        <div class="video-container">
+    <h3 style="color: white; margin-bottom: 10px; text-align: center;">Final Épica</h3>
+    <video controls poster="imagen/lucha.jpg">
+        <source src="video/video3.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento video.
+    </video>
+</div>
+
 
         <section>
             <h2>🏆 Imágenes Principales</h2>
@@ -437,7 +446,7 @@
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
-                particle.style.cssText = `
+                particle.style.cssText = 
                     position: fixed;
                     width: 4px;
                     height: 4px;
@@ -448,27 +457,22 @@
                     top: ${Math.random() * 100}vh;
                     left: ${Math.random() * 100}vw;
                     animation: float ${3 + Math.random() * 4}s infinite ease-in-out;
-                `;
+                ;
                 
                 document.body.appendChild(particle);
             }
         }
 
         // CSS para la animación de partículas
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% {
-                    transform: translateY(0px) rotate(0deg);
-                    opacity: 0.1;
-                }
-                50% {
-                    transform: translateY(-20px) rotate(180deg);
-                    opacity: 0.3;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-</body>
-</html>
+particle.style.cssText = `
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    top: ${Math.random() * 100}vh;
+    left: ${Math.random() * 100}vw;
+    animation: float ${3 + Math.random() * 4}s infinite ease-in-out;
+`;
